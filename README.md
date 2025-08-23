@@ -1,14 +1,14 @@
 # 🚀 XML Forge - Landing Page
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/SEU-USUARIO/SEU-REPOSITORIO/main/assets/hero-image.png" alt="XML Forge Interface" width="600"/>
+  <img src="https://raw.githubusercontent.com/jppalves/xml-forge-site/main/assets/hero-image.png" alt="XML Forge Interface" width="600"/>
 </p>
 
 <p align="center">
   <strong>A página de apresentação definitiva para a extensão XML Forge.</strong>
   <br />
   <br />
-  <a href="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/"><strong>Ver Projeto Online »</strong></a>
+  <a href="https://jppalves.github.io/xml-forge-site/"><strong>Ver Projeto Online »</strong></a>
 </p>
 
 ---
@@ -29,7 +29,7 @@ Construída com:
 * 🎨 **Design Limpo e Moderno:** Interface projetada para focar na experiência do usuário.
 * 📱 **Totalmente Responsiva:** Layout adaptável para desktops, tablets e smartphones.
 * ⚙️ **Seção de Funcionalidades Interativa:** Abas dinâmicas que revelam os detalhes de cada ferramenta da extensão.
-* smooth **Navegação Suave:** Scroll suave e links âncora para uma navegação fluida.
+* 💨 **Navegação Suave:** Scroll suave e links âncora para uma navegação fluida.
 * 🍔 **Menu Hamburger:** Menu de navegação otimizado para dispositivos móveis.
 
 ---
@@ -56,7 +56,7 @@ Você pode visualizar a página diretamente no seu navegador de duas formas:
 ### 1. Online (via GitHub Pages)
 
 A maneira mais fácil é acessar a versão hospedada:
-[https://SEU-USUARIO.github.io/SEU-REPOSITORIO/](https://SEU-USUARIO.github.io/SEU-REPOSITORIO/)
+**[https://jppalves.github.io/xml-forge-site/](https://jppalves.github.io/xml-forge-site/)**
 
 *(Nota: Pode levar alguns minutos para o site ficar online após o primeiro push).*
 
@@ -66,11 +66,11 @@ Para rodar o projeto no seu computador:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git](https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git)
+    git clone [https://github.com/jppalves/xml-forge-site.git](https://github.com/jppalves/xml-forge-site.git)
     ```
 2.  **Navegue até a pasta do projeto:**
     ```bash
-    cd SEU-REPOSITORIO
+    cd xml-forge-site
     ```
 3.  **Abra o arquivo `index.html`** no seu navegador de preferência.
 
@@ -78,7 +78,7 @@ Para rodar o projeto no seu computador:
 
 ## 👤 Autor
 
-* **João Penha** - [GitHub](https://github.com/SEU-USUARIO)
+* **João Penha** - [GitHub](https://github.com/jppalves)
 
 ---
 
