@@ -5,16 +5,24 @@ import { convertXmlToJson } from './modules/xmlToJson.js';
 import { convertJsonToXml } from './modules/jsonToXml.js';
 import { setupDownloadButton } from './modules/download.js';
 import { setupDiffModal } from './modules/diffManager.js';
+<<<<<<< HEAD
+=======
+import { validateXmlWithXsd } from './modules/xsdValidator.js';
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- REFERÊNCIAS AOS ELEMENTOS DO DOM ---
+<<<<<<< HEAD
     // Elementos principais da UI
+=======
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     const xmlInput = document.getElementById('xmlInput');
     const outputContainer = document.querySelector('.output-container');
     const output = document.getElementById('output');
     const themeToggle = document.getElementById('themeToggle');
     const historyList = document.getElementById('historyList');
+<<<<<<< HEAD
 
     // Barras de Status
     const inputStatusBar = document.getElementById('inputStatusBar');
@@ -35,6 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('downloadBtn');
 
     // Elementos do Modal de Comparação (Diff)
+=======
+    const inputStatusBar = document.getElementById('inputStatusBar');
+    const statusBar = document.getElementById('statusBar');
+    const formatXmlBtn = document.getElementById('formatXml');
+    const xmlToJsonBtn = document.getElementById('xmlToJson');
+    const jsonToXmlBtn = document.getElementById('jsonToXml');
+    const openFileBtn = document.getElementById('openFileBtn');
+    const openFileInput = document.getElementById('openFile');
+    const clearBtn = document.getElementById('clearBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    
+    // --- ELEMENTOS DO MODAL DIFF ---
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     const diffXmlBtn = document.getElementById('diffXml');
     const diffModal = document.getElementById('diffModal');
     const closeDiffModalBtn = document.getElementById('closeDiffModal');
@@ -48,22 +70,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const openFileSourceInput = document.getElementById('openFileSourceInput');
     const openFileChangedBtn = document.getElementById('openFileChangedBtn');
     const openFileChangedInput = document.getElementById('openFileChangedInput');
+<<<<<<< HEAD
 
     // Elementos do Modal de Validação (XSD)
+=======
+    const clearSourceXmlBtn = document.getElementById('clearSourceXmlBtn'); 
+    const clearChangedXmlBtn = document.getElementById('clearChangedXmlBtn'); 
+    
+    // --- ELEMENTOS DO MODAL XSD ---
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     const validateXsdBtn = document.getElementById('validateXsd');
     const xsdModal = document.getElementById('xsdModal');
     const closeXsdModalBtn = document.getElementById('closeXsdModal');
     const runXsdValidationBtn = document.getElementById('runXsdValidationBtn');
+<<<<<<< HEAD
     const xsdInput = document.getElementById('xsdInput');
     const xsdOutput = document.getElementById('xsdOutput');
     const xsdStatusBar = document.getElementById('xsdStatusBar');
     const openFileXsdBtn = document.getElementById('openFileXsdBtn');
     const openFileXsdInput = document.getElementById('openFileXsdInput');
+=======
+    const xsdStatusBar = document.getElementById('xsdStatusBar');
+    const openFileXsdBtn = document.getElementById('openFileXsdBtn');
+    const openFileXsdInput = document.getElementById('openFileXsdInput');
+    const xsdXmlInput = document.getElementById('xsdXmlInput');
+    const xsdInput = document.getElementById('xsdInput');
+    const xsdOutput = document.getElementById('xsdOutput');
+    const clearXsdXmlBtn = document.getElementById('clearXsdXmlBtn'); 
+    const clearXsdSchemaBtn = document.getElementById('clearXsdSchemaBtn'); 
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 
 
     // --- INICIALIZAÇÃO DOS MÓDULOS ---
     setupDownloadButton(downloadBtn, output);
     setupDiffModal({
+<<<<<<< HEAD
         diffXmlBtn,
         diffModal,
         closeDiffModalBtn,
@@ -77,6 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
         openFileSourceInput,
         openFileChangedBtn,
         openFileChangedInput
+=======
+        diffXmlBtn, diffModal, closeDiffModalBtn, runDiffBtn, xmlSourceInput,
+        xmlChangedInput, diffOutput, sourceStatusBar, changedStatusBar,
+        openFileSourceBtn, openFileSourceInput, openFileChangedBtn, openFileChangedInput
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     });
 
     // --- FUNÇÕES AUXILIARES DE UI ---
@@ -107,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             statusInfo.innerHTML = `<span>Linhas: ${lineCount}</span><span>Tamanho: ${sizeInKB} KB</span>`;
         }
     };
+<<<<<<< HEAD
     
     // Função para atualizar a barra de status do modal XSD
     const updateXsdStatusBar = (text) => {
@@ -122,6 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
     xmlInput.addEventListener('input', () => {
         updateInputStatusBar(xmlInput.value);
     });
+=======
+
+    // --- LÓGICA DE ATUALIZAÇÃO E MODO ESCURO ---
+    xmlInput.addEventListener('input', () => updateInputStatusBar(xmlInput.value));
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const isDarkMode = document.body.classList.contains('dark-mode');
@@ -134,14 +186,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- EVENTOS DOS BOTÕES PRINCIPAIS ---
+<<<<<<< HEAD
      formatXmlBtn.addEventListener('click', async () => {
         const rawXml = xmlInput.value;
         clearErrorMessages();
         if (!rawXml.trim()) {
+=======
+    formatXmlBtn.addEventListener('click', async () => {
+        const rawXml = xmlInput.value;
+        clearErrorMessages();
+        if (!rawXml.trim()) {
+            displayError("O campo de entrada está vazio. Por favor, insira um XML.");
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
             output.innerHTML = '';
             updateOutputStatusBar('');
             return;
         }
+<<<<<<< HEAD
         const result = formatXml(rawXml);
         output.innerHTML = highlightSyntax(result.formattedXml);
         updateOutputStatusBar(result.formattedXml);
@@ -151,6 +212,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (result.error) displayError(result.error.message);
     });
+=======
+        
+        const result = formatXml(rawXml);
+        await historyManager.addToHistory(rawXml);
+        renderHistory();
+        if (result.error) {
+            displayError(result.error.message);
+            const highlightedInvalidXml = highlightSyntax(result.formattedXml);
+            let finalHtml = highlightedInvalidXml;
+            if (result.error.line > 0) {
+                const lines = highlightedInvalidXml.split('\n');
+                const errorLineIndex = result.error.line - 1;
+                if (errorLineIndex < lines.length) {
+                    lines[errorLineIndex] = `<span class="error-line">${lines[errorLineIndex]}</span>`;
+                    finalHtml = lines.join('\n');
+                }
+            }
+            output.innerHTML = finalHtml;
+            updateOutputStatusBar(result.formattedXml);
+        } else {
+            output.innerHTML = highlightSyntax(result.formattedXml);
+            updateOutputStatusBar(result.formattedXml);
+        }
+    });
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     xmlToJsonBtn.addEventListener('click', async () => {
         const rawXml = xmlInput.value;
         clearErrorMessages();
@@ -168,6 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
             displayError(error.message);
         }
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     jsonToXmlBtn.addEventListener('click', async () => {
         const jsonInput = xmlInput.value;
         clearErrorMessages();
@@ -192,6 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     openFileBtn.addEventListener('click', () => openFileInput.click());
     openFileInput.addEventListener('change', (event) => {
         const file = event.target.files[0];
+<<<<<<< HEAD
         if (file) {
             const reader = new FileReader();
             reader.onload = async (e) => {
@@ -204,6 +296,20 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.readAsText(file);
         }
     });
+=======
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = async (e) => {
+            const content = e.target.result;
+            xmlInput.value = content;
+            await historyManager.addToHistory(content);
+            renderHistory();
+            updateInputStatusBar(content);
+        };
+        reader.readAsText(file);
+    });
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     copyBtn.addEventListener('click', () => {
         navigator.clipboard.writeText(output.innerText)
             .then(() => {
@@ -213,6 +319,10 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(() => displayError('Falha ao copiar.'));
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     clearBtn.addEventListener('click', () => {
         xmlInput.value = '';
         output.innerHTML = '';
@@ -232,13 +342,18 @@ document.addEventListener('DOMContentLoaded', () => {
             li.addEventListener('click', () => { 
                 xmlInput.value = item;
                 updateInputStatusBar(item);
+<<<<<<< HEAD
              });
+=======
+            });
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
             historyList.appendChild(li);
         });
     };
     
     // --- LÓGICA DO MODAL DE VALIDAÇÃO (XSD) ---
     validateXsdBtn.addEventListener('click', () => {
+<<<<<<< HEAD
         if (!xmlInput.value.trim()) {
             displayError("Primeiro, insira na tela principal o XML que você deseja validar.");
             return;
@@ -255,11 +370,78 @@ document.addEventListener('DOMContentLoaded', () => {
         const xmlContent = xmlInput.value;
         const xsdContent = xsdInput.value;
 
+=======
+        xsdXmlInput.value = '';
+        xsdInput.value = '';
+        xsdOutput.innerHTML = '';
+        xsdOutput.className = '';
+        xsdModal.style.display = 'flex';
+    });
+
+    const closeXsdModal = () => xsdModal.style.display = 'none';
+    closeXsdModalBtn.addEventListener('click', closeXsdModal);
+
+    const updateXsdXmlStatusBar = (text) => {
+        const xsdXmlStatusBar = document.getElementById('xsdXmlStatusBar');
+        if (!xsdXmlStatusBar) return;
+        const lineCount = text ? text.split('\n').length : 0;
+        const sizeInKB = text ? (new Blob([text]).size / 1024).toFixed(2) : 0;
+        const statusInfo = xsdXmlStatusBar.querySelector('.status-info');
+        if (statusInfo) {
+            statusInfo.innerHTML = `<span>Linhas: ${lineCount}</span><span>Tamanho: ${sizeInKB} KB</span>`;
+        }
+    };
+    const updateXsdSchemaStatusBar = (text) => {
+        const lineCount = text ? text.split('\n').length : 0;
+        const sizeInKB = text ? (new Blob([text]).size / 1024).toFixed(2) : 0;
+        const statusInfo = xsdStatusBar.querySelector('.status-info');
+        if (statusInfo) {
+            statusInfo.innerHTML = `<span>Linhas: ${lineCount}</span><span>Tamanho: ${sizeInKB} KB</span>`;
+        }
+    };
+    xsdXmlInput.addEventListener('input', () => updateXsdXmlStatusBar(xsdXmlInput.value));
+    xsdInput.addEventListener('input', () => updateXsdSchemaStatusBar(xsdInput.value));
+    document.getElementById('openFileXsdXmlBtn').addEventListener('click', () => {
+        document.getElementById('openFileXsdXmlInput').click();
+    });
+    document.getElementById('openFileXsdXmlInput').addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const content = e.target.result;
+            xsdXmlInput.value = content;
+            updateXsdXmlStatusBar(content);
+        };
+        reader.readAsText(file);
+    });
+    openFileXsdBtn.addEventListener('click', () => openFileXsdInput.click());
+    openFileXsdInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const content = e.target.result;
+            xsdInput.value = content;
+            updateXsdSchemaStatusBar(content);
+        };
+        reader.readAsText(file);
+    });
+    runXsdValidationBtn.addEventListener('click', async () => {
+        const xmlContent = xsdXmlInput.value;
+        const xsdContent = xsdInput.value;
+        if (!xmlContent.trim()) {
+            xsdOutput.className = 'validation-error';
+            xsdOutput.textContent = 'Erro: O campo XML não pode estar vazio.';
+            return;
+        }
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
         if (!xsdContent.trim()) {
             xsdOutput.className = 'validation-error';
             xsdOutput.textContent = 'Erro: O esquema XSD não pode estar vazio.';
             return;
         }
+<<<<<<< HEAD
 
         runXsdValidationBtn.disabled = true;
         runXsdValidationBtn.classList.add('btn-loading');
@@ -312,10 +494,64 @@ openFileXsdBtn.addEventListener('click', () => openFileXsdInput.click());
 
 
     // --- LÓGICA DE FECHAMENTO DOS MODAIS ---
+=======
+        runXsdValidationBtn.disabled = true;
+        runXsdValidationBtn.classList.add('btn-loading');
+        xsdOutput.className = '';
+        xsdOutput.textContent = 'A validar...';
+        setTimeout(async () => {
+            try {
+                const result = await validateXmlWithXsd(xmlContent, xsdContent);
+                xsdOutput.className = result.valid ? 'validation-success' : 'validation-error';
+                xsdOutput.textContent = result.message;
+            } catch (error) {
+                xsdOutput.className = 'validation-error';
+                xsdOutput.textContent = `Ocorreu um erro crítico durante a validação.\nDetalhes: ${error.message}`;
+            } finally {
+                runXsdValidationBtn.disabled = false;
+                runXsdValidationBtn.classList.remove('btn-loading');
+            }
+        }, 50);
+    });
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     window.addEventListener('click', (event) => {
         if (event.target === xsdModal) closeXsdModal();
     });
 
+<<<<<<< HEAD
+=======
+    // ---  EVENTOS DOS BOTÕES DE LIMPEZA DOS MODAIS ---
+    const updateDiffStatusBar = (barEl, text) => {
+        if (!barEl) return;
+        const statusInfo = barEl.querySelector('.status-info');
+        if (!statusInfo) return;
+        const lineCount = text ? text.split('\n').length : 0;
+        const sizeKB = text ? (new Blob([text]).size / 1024).toFixed(2) : '0.00';
+        statusInfo.innerHTML = `<span>Linhas: ${lineCount}</span><span>Tamanho: ${sizeKB} KB</span>`;
+    };
+
+    clearSourceXmlBtn.addEventListener('click', () => {
+        xmlSourceInput.value = '';
+        updateDiffStatusBar(sourceStatusBar, '');
+    });
+
+    clearChangedXmlBtn.addEventListener('click', () => {
+        xmlChangedInput.value = '';
+        updateDiffStatusBar(changedStatusBar, '');
+    });
+
+    clearXsdXmlBtn.addEventListener('click', () => {
+        xsdXmlInput.value = '';
+        updateXsdXmlStatusBar('');
+    });
+    
+    clearXsdSchemaBtn.addEventListener('click', () => {
+        xsdInput.value = '';
+        updateXsdSchemaStatusBar('');
+    });
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
     // --- INICIALIZAÇÃO ---
     renderHistory();
 });

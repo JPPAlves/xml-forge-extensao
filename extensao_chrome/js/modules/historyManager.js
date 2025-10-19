@@ -3,7 +3,11 @@ const MAX_HISTORY = 10;
 export const historyManager = {
     /**
      * Obtém a lista de histórico do armazenamento da extensão.
+<<<<<<< HEAD
      * @returns {Promise<string[]>} Uma promessa que resolve para o array de histórico.
+=======
+     * @returns {Promise<string[]>} 
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
      */
     async getHistory() {
         const data = await chrome.storage.local.get('xmlHistory');

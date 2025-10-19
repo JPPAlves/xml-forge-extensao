@@ -142,8 +142,13 @@ body.dark-mode .output-container {
     overflow-y: auto;
 }
 .output-container .status-bar-style {
+<<<<<<< HEAD
      margin-top: 0;
      padding: 0.5rem 1rem;
+=======
+    margin-top: 0;
+    padding: 0.5rem 1rem;
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 }
 
 /* --- Histórico --- */
@@ -268,6 +273,10 @@ body.dark-mode .theme-toggle-switch .icon.moon {
     justify-content: center;
     align-items: center;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 .modal-content {
     background-color: var(--bg-color-light);
     color: var(--text-color-light);
@@ -276,19 +285,39 @@ body.dark-mode .theme-toggle-switch .icon.moon {
     width: 95%;
     max-width: 900px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+<<<<<<< HEAD
 }
+=======
+    
+    /* Novas propriedades */
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh; 
+}
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 body.dark-mode .modal-content {
     background-color: var(--header-bg-dark);
     color: var(--text-color-dark);
     border-color: var(--border-color-dark);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--border-color-light);
+<<<<<<< HEAD
 }
+=======
+    flex-shrink: 0; 
+}
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 body.dark-mode .modal-header {
     border-bottom-color: var(--border-color-dark);
 }
@@ -313,8 +342,15 @@ body.dark-mode .modal-header h2 {
 body.dark-mode .close-button {
     color: var(--text-color-dark);
 }
+<<<<<<< HEAD
 .modal-body {
     padding: 1.5rem;
+=======
+
+.modal-body {
+    padding: 1.5rem;
+    overflow-y: auto; 
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 }
 
 /* --- Inputs lado a lado no modal diff --- */
@@ -323,7 +359,10 @@ body.dark-mode .close-button {
     gap: 2rem;
 }
 
+<<<<<<< HEAD
 /* ✅ CORREÇÃO: Editores do modal agora seguem o tema da aplicação */
+=======
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 .modal-editor-container {
     flex: 1;
     display: flex;
@@ -348,7 +387,10 @@ body.dark-mode .close-button {
     border: none;
     color: var(--text-color-light);
 }
+<<<<<<< HEAD
 /* Regra de dark-mode para o editor do modal */
+=======
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 body.dark-mode .modal-editor-container {
     border-color: var(--border-color-dark);
     background-color: var(--header-bg-dark);
@@ -359,13 +401,17 @@ body.dark-mode .modal-editor-container label {
 body.dark-mode .modal-editor-container textarea {
     color: var(--text-color-dark);
 }
+<<<<<<< HEAD
 /* Fim da correção */
+=======
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 
 .modal-footer {
     padding: 1rem 1.5rem;
     display: flex;
     justify-content: flex-end;
     border-top: 1px solid var(--border-color-light);
+<<<<<<< HEAD
 }
 body.dark-mode .modal-footer {
     border-top-color: var(--border-color-dark);
@@ -376,23 +422,54 @@ body.dark-mode .modal-footer {
 .modal-output h3 {
     margin-top: 0;
 }
+=======
+    flex-shrink: 0; 
+}
+
+body.dark-mode .modal-footer {
+    border-top-color: var(--border-color-dark);
+}
+
+.modal-output {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    flex: 1; 
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-output h3 {
+    margin-top: 0;
+}
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 .modal-output pre {
     margin-top: 0.5rem;
     background-color: var(--header-bg-light);
     border: 1px solid var(--border-color-light);
     border-radius: 8px;
     padding: 1rem;
+<<<<<<< HEAD
     max-height: 200px;
     overflow-y: auto;
     white-space: pre-wrap;
     font-family: 'Courier New', Courier, monospace;
 }
+=======
+    overflow-y: auto; 
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace;
+    flex: 1; 
+}
+
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 body.dark-mode .modal-output pre {
     background-color: var(--bg-color-dark);
     border-color: var(--border-color-dark);
 }
 
 /* --- Estilos do Diff --- */
+<<<<<<< HEAD
 #diffOutput span {
     display: block;
 }
@@ -402,6 +479,90 @@ body.dark-mode .modal-output pre {
 .diff-removed {
     background-color: rgba(248, 81, 73, 0.2);
     text-decoration: line-through;
+=======
+.diff-delete {
+  color: #b91c1c; 
+  background-color: #fee2e2; 
+}
+.diff-insert {
+  color: #15803d; 
+  background-color: #dcfce7; 
+}
+body.dark-mode .diff-delete {
+  color: #fca5a5; 
+  background-color: rgba(239, 68, 68, 0.15); 
+}
+body.dark-mode .diff-insert {
+  color: #86efac;
+  background-color: rgba(74, 222, 128, 0.15); 
+}
+        
+/* --- Cabeçalho do resultado no Modal Diff --- */
+.modal-output-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.modal-output-header h3 {
+    margin: 0;
+}
+
+/* --- Estilo do Tooltip --- */
+.info-tooltip {
+    position: relative;
+    display: inline-block;
+}
+.info-tooltip .info-icon {
+    width: 16px;
+    height: 16px;
+    cursor: help;
+    color: #64748b;
+}
+body.dark-mode .info-tooltip .info-icon {
+    color: #94a3b8;
+}
+.info-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 240px;
+    background-color: #334155;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 101;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -120px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.info-tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #334155 transparent transparent transparent;
+}
+.info-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+.info-tooltip .tooltip-text .text-removed {
+    color: #ef4444;
+    font-weight: 600;
+}
+.info-tooltip .tooltip-text .text-added {
+    color: #4ade80;
+    font-weight: 600;
+>>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 }
 
 /* --- Resultado da Validação XSD --- */
