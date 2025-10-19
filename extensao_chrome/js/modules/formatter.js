@@ -1,40 +1,3 @@
-<<<<<<< HEAD
-=======
-/**
- * Traduz mensagens de erro técnicas do DOMParser para mensagens mais amigáveis.
- * @param {string} technicalError - A mensagem de erro original do parser.
- * @returns {string} - A mensagem de erro amigável.
- */
-function translateErrorMessage(technicalError) {
-    const error = technicalError.toLowerCase();
-
-    if (error.includes("start tag expected")) {
-        return "Erro de sintaxe: O documento deve começar com uma tag XML válida (ex: <root>). Verifique se não há texto solto no início do arquivo.";
-    }
-    if (error.includes("mismatched tag") || error.includes("tag mismatch")) {
-        return "Erro de aninhamento: Uma tag foi fechada na ordem errada. Exemplo incorreto: <a><b></a></b>. O correto seria: <a><b></b></a>.";
-    }
-    if (error.includes("not closed")) {
-        return "Erro de sintaxe: Uma tag foi aberta, mas nunca foi fechada. Verifique se todas as tags como `<tag>` possuem um `</tag>` correspondente.";
-    }
-    if (error.includes("junk after document element")) {
-        return "Erro estrutural: O documento XML só pode ter um elemento raiz. Verifique se não há tags extras fora da tag principal.";
-    }
-    
-    // Limpa a mensagem padrão caso não seja um erro conhecido
-    const cleanError = technicalError
-        .replace("This page contains the following errors:", "")
-        .replace(/Below is a rendering of the page up to the first error\./i, "")
-        .trim();
-    return `Erro de análise XML: ${cleanError}`;
-}
-
-/**
- * Formata uma string XML com indentação e valida sua estrutura.
- * @param {string} xml - A string XML de entrada.
- * @returns {{formattedXml: string, error: {message: string, line: number}|null}}
- */
->>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 function formatXml(xml) {
     try {
         xml = xml.trim();
@@ -56,39 +19,6 @@ function formatXml(xml) {
             const errorText = errorElement.innerText || errorElement.textContent;
             const lineMatch = errorText.match(/line number (\d+)/) || errorText.match(/linha (\d+)/);
             const lineNumber = lineMatch ? parseInt(lineMatch[1], 10) : null;
-<<<<<<< HEAD
-            return {
-                formattedXml: xml,
-                error: {
-                    message: errorText.replace("This page contains the following errors:", "").trim(),
-                    line: lineNumber
-                }
-            };
-        }
-        
-        function processNode(node, indentation) {
-            let xmlString = "";
-            const indent = "\t".repeat(indentation);
-
-            if (node.nodeType === 1) { // Element
-                const attributes = Array.from(node.attributes).map(attr => `${attr.name}="${attr.value}"`).join(' ');
-                xmlString += `${indent}<${node.nodeName}${attributes ? ' ' + attributes : ''}`;
-                if (node.childNodes.length === 0) {
-                    xmlString += "/>\n";
-                } else if (node.childNodes.length === 1 && node.childNodes[0].nodeType === 3 && node.childNodes[0].nodeValue.trim() !== '') {
-                    xmlString += `>${node.childNodes[0].nodeValue.trim()}</${node.nodeName}>\n`;
-                } else {
-                    xmlString += ">\n";
-                    node.childNodes.forEach(child => {
-                        xmlString += processNode(child, indentation + 1);
-                    });
-                    xmlString += `${indent}</${node.nodeName}>\n`;
-                }
-            } else if (node.nodeType === 8) { 
-                xmlString += `${indent}\n`;
-            } else if (node.nodeType === 4) { // CDATA
-                xmlString += `${indent}<![CDATA[${node.nodeValue}]]>\n`;
-=======
             const userFriendlyMessage = translateErrorMessage(errorText);
             
             return {
@@ -143,7 +73,6 @@ function formatXml(xml) {
                 case 8: // Comment
                     xmlString += `${indent}\n`;
                     break;
->>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
             }
             return xmlString;
         }
@@ -156,14 +85,6 @@ function formatXml(xml) {
     }
 }
 
-<<<<<<< HEAD
-=======
-/**
- * Adiciona spans com classes CSS para destacar a sintaxe de uma string XML.
- * @param {string} xml - A string XML (preferencialmente já formatada).
- * @returns {string} - Uma string HTML com a sintaxe destacada.
- */
->>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 function highlightSyntax(xml) {
     let escapedXml = xml
         .replace(/&/g, '&amp;')
@@ -172,7 +93,6 @@ function highlightSyntax(xml) {
 
     return escapedXml
         .replace(/(&lt;!--[\s\S]*?--&gt;)/g, '<span class="syntax-comment">$1</span>')
-<<<<<<< HEAD
         .replace(/(&lt;\?xml.*?\?&gt;)/g, '<span class="syntax-comment">$1</span>')
         .replace(/([a-zA-Z0-9_:-]+)=(".*?")/g, '<span class="syntax-attribute">$1</span>=<span class="syntax-string">$2</span>')
         .replace(/(&lt;\/?)([a-zA-Z0-9_:-]+)/g, '$1<span class="syntax-tag">$2</span>')
@@ -180,15 +100,4 @@ function highlightSyntax(xml) {
         .replace(/(&gt;)([^&lt;]+?)(&lt;)/g, '$1<span class="syntax-text">$2</span>$3');
 }
 
-=======
-        .replace(/(&lt;\?[\s\S]*?\?&gt;)/g, '<span class="syntax-processing-instruction">$1</span>')
-        .replace(/(&lt;!\[CDATA\[[\s\S]*?\]\]&gt;)/g, '<span class="syntax-cdata">$1</span>')
-        .replace(/([a-zA-Z0-9_:-]+)=(['"])(.*?)(\2)/g, '<span class="syntax-attribute-name">$1</span>=<span class="syntax-attribute-value">$2$3$4</span>')
-        .replace(/(&lt;\/?)([a-zA-Z0-9_:-]+)/g, '$1<span class="syntax-tag-name">$2</span>')
-        .replace(/(&lt;|&gt;|\/&gt;)/g, '<span class="syntax-punctuation">$1</span>')
-        .replace(/(?<=>)([^<]+)(?=<)/g, '<span class="syntax-text">$1</span>');
-}
-
-// Exporta as funções para que possam ser usadas em outros arquivos
->>>>>>> 53eb5ee (feat: Implementação final das funcionalidades e melhorias de UI)
 export { formatXml, highlightSyntax };
